@@ -3,7 +3,10 @@ import './App.css';
 import { useState, useEffect } from "react";
 import PokemonList from './PokemonList'
 import Pagination from './Pagination'
+import PlayButton from './PlayButton'
 import pokemonLogo from './assets/pokemon-logo.png'
+import song from './assets/OpeningMovie.wav'
+import useSound from 'use-sound';
 
 const App = () => {
 
@@ -15,6 +18,7 @@ const App = () => {
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
   const [loading, setLoading] = useState(true);
+  const [play, { stop, isPlaying }] = useSound(song);
 
   const getPokemon = async () => {
      const toArray= [];
@@ -122,7 +126,16 @@ const App = () => {
                  gotoNextPage={nextPageUrl ? gotoNextPage : null}
                  gotoPrevPage={prevPageUrl ? gotoPrevPage : null} />
           </div>
-          <br/>
+          <br/><br/>
+          <PlayButton
+               active={isPlaying}
+               size={60}
+               iconColor="var(--color-background)"
+               idleBackgroundColor="var(--color-text)"
+               activeBackgroundColor="var(--color-primary)"
+               play={play}
+               stop={stop}
+          />
       </div>
       <br/><br/>
       <div className="footer-content">

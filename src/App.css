@@ -97,6 +97,15 @@ body {
      background-repeat: no-repeat;
 }
 
+.music-button {
+     padding: 10px;
+     color: white;
+     font-weight: bold;
+     font-size: calc(10px + 2vmin);
+     background-color: #0082CE;
+     border-color: #0082CE;
+}
+
 /* ===========
 
   STANDARD Create-React-App CSS

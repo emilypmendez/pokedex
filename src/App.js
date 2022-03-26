@@ -100,7 +100,7 @@ const App = () => {
                                    </div>
                                    <div className="divTableRow">
                                         <div className="divTableCell"> Weight </div>
-                                        <div className="divTableCell">{" "}{Math.round(data.weight * 4.3)} lbs</div>
+                                        <div className="divTableCell">{" "}{Math.round(data.weight * 0.3)} lbs</div>
                                    </div>
                                    <div className="divTableRow">
                                         <div className="divTableCell"> Number of Battles </div>

@@ -124,6 +124,11 @@ const App = () => {
           </div>
           <br/>
       </div>
+      <br/><br/>
+      <div className="footer-content">
+      Developed with ♥ by <a href="http://www.emilypmendez.com">Emily Portalatin-Mendez</a>
+      </div>
+      <br/><br/>
     </div>
   );
 }

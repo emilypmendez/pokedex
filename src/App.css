@@ -2,20 +2,14 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pokemon-logo {
+     height: 140px;
+     width: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  background-color: #0082ce;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +18,87 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     /* font-size: calc(10px + 2vmin); */
+     /* color: white; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pokemon-searchbar {
+     padding-top: 10px;
 }
+
+.divTable {
+     display: table;
+     max-width: 20em;
+     float: right;
+     display: flex;
+     align-items: center;
+}
+
+.divTableRow {
+     display: table-row;
+     padding-bottom: 10px;
+}
+
+.divTableHeading {
+     background-color: #eee;
+     display: table-header-group;
+     font-weight: bold;
+}
+
+.divTableCell,
+.divTableHead {
+     border: 1px solid #99999;
+     display: table-cell;
+     padding: 3px 10px;
+}
+
+.divTableFooter{
+     background-color: #eee;
+     display: table-footer-group;
+     font-weight: bold;
+}
+
+.divTableBody {
+     display: table-row-group;
+}
+
+.divTableCell:nth-child(1n){
+     background-color: gainsboro;
+}
+
+.container {
+     display: flex;
+     opacity: 0.9;
+     background-color: #99aaab;
+     justify-content: center;
+}
+
+.img {
+     height: 26rem;
+     width: auto;
+}
+
+input {
+     box-sizing: border-box;
+     font-size: 2rem;
+     padding: 1rem;
+     display: block;
+     margin: 2rem auto;
+}
+
+body {
+     height: 100%;
+     background: url("./assets/pokemon-wallpaper.jpg");
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+
+/* ===========
+
+  STANDARD Create-React-App CSS
+
+=============== */

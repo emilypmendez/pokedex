@@ -78,8 +78,13 @@
 }
 
 .img {
-     height: 26rem;
-     width: auto;
+    /* height: 34rem; */
+    /* width: auto; */
+    display: block;
+    margin: 20px 0;
+    width: 180px;
+    position: relative;
+    left: -45px;
 }
 
 input {
@@ -105,9 +110,3 @@ body {
      background-color: #0082CE;
      border-color: #0082CE;
 }
-
-/* ===========
-
-  STANDARD Create-React-App CSS
-
-=============== */

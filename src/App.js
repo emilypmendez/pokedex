@@ -1,43 +1,23 @@
-import axios from "axios";
+
 import './App.css';
 import { useState, useEffect } from "react";
-import PokemonList from './PokemonList'
-import Pagination from './Pagination'
-import PlayButton from './PlayButton'
+import axios from "axios";
+import PokemonList from './components/PokemonList'
+import Pagination from './components/Pagination'
+import MusicButton from './components/MusicButton'
+import Searchbar from './components/Searchbar'
 import pokemonLogo from './assets/pokemon-logo.png'
-import song from './assets/OpeningMovie.wav'
-import useSound from 'use-sound';
 
-const App = () => {
+export default function App() {
 
-  const [pokemon, setPokemon] = useState("");
+
   const [pokemonList, setPokemonList] = useState([]);
-  const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonType, setPokemonType] = useState("");
+
   const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
+
   const [loading, setLoading] = useState(true);
-  const [play, { stop, isPlaying }] = useSound(song);
-
-  const getPokemon = async () => {
-     const toArray= [];
-
-     try {
-          const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
-          const response = await axios.get(url);
-          toArray.push(response.data);
-          setPokemonType(response.data.types[0].type.name); // give us the pokemon type
-          setPokemonData(toArray);
-          console.log(response);
-     } catch(e) {
-          console.log(e);
-     }
-  }
-
-  // useEffect(() => {
-  //      getPokemon();
-  // }, []);
 
   useEffect(() => {
        setLoading(true)
@@ -64,59 +44,14 @@ const App = () => {
 
  if (loading) return "Loading..."
 
-  const handleSubmit = (e) => {
-       e.preventDefault();
-       getPokemon();
- }
-
- const handleChange = (e) => {
-     setPokemon(e.target.value.toLowerCase());
-}
-
   return (
     <div className="App">
       <header className="header">
         <img src={pokemonLogo} alt="pokemon-logo" className="pokemon-logo" />
-        <h2><em>Gotta catch 'em all!</em></h2>
+        <h2><em>Gotta catch em all!</em></h2>
       </header>
       <div className="main-content">
-          <div className="pokemon-searchbar">
-               <form onSubmit={handleSubmit}>
-                    <label>
-                         <input type="text" onChange={handleChange} placeholder="search pokémon"/>
-                    </label>
-               </form>
-               {pokemonData.map((data) => {
-                    return (
-                         <> {/* return all pokemon data */}
-                         <div className="container">
-                              <img src={data.sprites["front_default"]} alt="pokemon-choice"/>
-
-                         <div className="divTable">
-                              <div className="divTableBody">
-                                   <div className="divTableRow">
-                                        <div className="divTableCell"> Type </div>
-                                        <div className="divTableCell">{pokemonType}</div>
-                                   </div>
-                                   <div className="divTableRow">
-                                        <div className="divTableCell"> Height </div>
-                                        <div className="divTableCell">{" "}{Math.round(data.height * 3.9)} "</div>
-                                   </div>
-                                   <div className="divTableRow">
-                                        <div className="divTableCell"> Weight </div>
-                                        <div className="divTableCell">{" "}{Math.round(data.weight * 0.3)} lbs</div>
-                                   </div>
-                                   <div className="divTableRow">
-                                        <div className="divTableCell"> Number of Battles </div>
-                                        <div className="divTableCell">{data.game_indices.length}</div>
-                                   </div>
-                              </div>
-                         </div>
-                         </div>
-                         </>
-                    )
-               })}
-          </div>
+          <Searchbar />
           <div className="pokemon-list">
                <h1>List of All Pokémon</h1>
                <PokemonList pokemonList={pokemonList} />
@@ -127,23 +62,16 @@ const App = () => {
                  gotoPrevPage={prevPageUrl ? gotoPrevPage : null} />
           </div>
           <br/><br/>
-          <PlayButton
-               active={isPlaying}
-               size={60}
-               iconColor="var(--color-background)"
-               idleBackgroundColor="var(--color-text)"
-               activeBackgroundColor="var(--color-primary)"
-               play={play}
-               stop={stop}
-          />
+          <MusicButton />
       </div>
+
       <br/><br/>
+
       <div className="footer-content">
-      Developed with ♥ by <a href="http://www.emilypmendez.com">Emily Portalatin-Mendez</a>
+      2022 © Developed with ♥ by <a href="https://www.emilypmendez.com">Emily Portalatin-Mendez</a>
       </div>
+      
       <br/><br/>
     </div>
   );
 }
-
-export default App;

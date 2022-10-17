@@ -5,7 +5,7 @@ export default function MusicButton() {
 
     // set up audio functionality in custom hook feature
      const useAudio = (song) => {
-       const [audio] = useState(new Audio(song));
+       const [audio] = useState(new Audio(song, {loop: true, volume: 1}));
        const [playing, setPlaying] = useState(false);
 
        const toggle = () => setPlaying(!playing); // toggle function

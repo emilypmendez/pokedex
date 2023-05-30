@@ -27,7 +27,15 @@
 }
 
 .pokemon-searchbar {
-     padding-top: 10px;
+     /* padding-top: 10px; */
+     padding: 20px;
+}
+
+.error-message {
+     color: red;
+     font-size: 24px;
+     font-weight: bold;
+     margin-top: 5px;
 }
 
 .divTable {
@@ -109,4 +117,13 @@ body {
      font-size: calc(10px + 2vmin);
      background-color: #0082CE;
      border-color: #0082CE;
+}
+
+.listItemStyles:hover {
+     background-color: #f2f2f2;
+   }
+
+.column-list {
+    margin: 5%;
+    justify-content: center;
 }

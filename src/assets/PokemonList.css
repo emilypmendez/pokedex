@@ -1,0 +1,16 @@
+.pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    justify-content: center;
+  }
+  
+  .pokemon-item {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f2f2f2;
+  }
+  
+  .pokemon-item.hovered {
+    background-color: #fff;
+  }

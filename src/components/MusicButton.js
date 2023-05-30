@@ -15,11 +15,13 @@ export default function MusicButton() {
         }, [playing, audio] );
 
        useEffect(() => { // set up the end feature
-         audio.addEventListener('ended', () => setPlaying(false));
-         return () => {
-           audio.removeEventListener('ended', () => setPlaying(false));
-         };
-       }, [audio]);
+        const handleEnd = () => setPlaying(false); // Define the handleEnd function
+
+        audio.addEventListener('ended', handleEnd);
+        return () => {
+          audio.removeEventListener('ended', handleEnd); // Pass the function reference instead of the arrow function
+        };
+      }, [audio]);
 
        return [playing, toggle]; // limit the render
      };

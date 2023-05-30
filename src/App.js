@@ -12,12 +12,13 @@ export default function App() {
 
 
   const [pokemonList, setPokemonList] = useState([]);
-
   const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
-
   const [loading, setLoading] = useState(true);
+
+  const [selectedPokemon, setSelectedPokemon] = useState(""); // onClick list of pokemon
+  // const [enteredText, setEnteredText] = useState(""); // selected text from list of pokemon populated into searchbar
 
   useEffect(() => {
        setLoading(true)
@@ -48,29 +49,35 @@ export default function App() {
     <div className="App">
       <header className="header">
         <img src={pokemonLogo} alt="pokemon-logo" className="pokemon-logo" />
-        <h2><em>Gotta catch em all!</em></h2>
+        <h2><em>Gotta catch 'em all!</em></h2>
       </header>
       <div className="main-content">
-          <Searchbar />
-          <div className="pokemon-list">
+              <h1>Welcome to the Pokédex!</h1>
+                <MusicButton />
+
+                <Searchbar
+                  selectedPokemon={selectedPokemon}
+                />
+          <div className="column-list">
                <h1>List of All Pokémon</h1>
-               <PokemonList pokemonList={pokemonList} />
-          </div><br/>
-          <div className="pagination-buttons">
+               <p><em>Click to select a Pokémon or search for your favorite!</em></p>
+               <PokemonList pokemonList={pokemonList} setSelectedPokemon={setSelectedPokemon}/>    
+          <br/><br/>
+               <div className="pagination-buttons">
                <Pagination
                  gotoNextPage={nextPageUrl ? gotoNextPage : null}
                  gotoPrevPage={prevPageUrl ? gotoPrevPage : null} />
+              </div>
           </div>
-          <br/><br/>
-          <MusicButton />
+          <br/>
       </div>
 
       <br/><br/>
 
       <div className="footer-content">
-      2022 © Developed with ♥ by <a href="https://www.emilypmendez.com">Emily Portalatin-Mendez</a>
+      2022 © Developed with ♥ by <a href="https://www.emilypmendez.com">Emily Portalatín-Méndez</a>
       </div>
-      
+
       <br/><br/>
     </div>
   );
